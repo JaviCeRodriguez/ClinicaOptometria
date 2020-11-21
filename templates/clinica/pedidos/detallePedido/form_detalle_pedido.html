@@ -26,8 +26,7 @@
                                     {% endif %}
                                 </label>
                                 {% if editar %}
-                                    <input type="text" value="{{object.producto}}" readonly
-                                    class="form-control text-center rounded">
+                                    {{form.producto|attr:"value:object.producto"|attr:"readonly:on"|add_class:'form-control text-center rounded'}}
                                 {% else %}
                                     {{form.producto|add_class:'form-control text-center rounded'}}
                                 {% endif %}
@@ -42,6 +41,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- {{form.pedido|attr:"value:object.pedido"|add_class:"d-none"}} -->
 
                     <div class="d-flex justify-content-center">
                         <div class="btn-group shadow-sm" role="group" aria-label="Basic outlined example">

@@ -85,8 +85,8 @@ class DetallePedido(ModeloBase):
     """
     Tabla intermedia entre los pedidos y sus productos
     """
-    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE, blank=True)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE, blank=True)
+    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE, blank=True, null=True)
     cantidad = models.PositiveIntegerField(verbose_name="Cantidad", default=1)
     total = models.DecimalField(max_digits=14,
                                 decimal_places=2,

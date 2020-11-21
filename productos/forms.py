@@ -27,7 +27,7 @@ class FormularioDetallePedido(ModelForm):
 
     class Meta:
         model = DetallePedido
-        fields = '__all__'
+        fields = ('producto', 'cantidad')
 
 
 class FormularioCategoria(ModelForm):
