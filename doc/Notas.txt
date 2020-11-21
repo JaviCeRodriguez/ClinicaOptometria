@@ -1,0 +1,45 @@
+Estado -> pendiente, taller, finalizado
+
+Usuarios:
+    admin: admin
+
+
+Roles:
+    Secretaria: agregar, modificar o eliminar los turnos de los Pacientes.
+    ----------------------------------------------------------------------
+    Personal Medico: agregar Observaciones al historial médico, ver el listado de Pacientes filtrando por día, mes o año, solo puede ver los Pacientes asignados a él,
+    ---------------------------------------------------------------------------------------------------------------------------
+    Vendedores: generar un pedido para el Paciente, donde detalla el Producto que quiere adquirir, el precio (pueden ser más de 
+    un producto), un subtotal, tipo de pago (tarjeta de crédito, debido, billetera virtual o efectivo).
+    
+    a. El producto tiene nombre, si está clasificado como Lente tendrá la opción de
+    Lejos/Cerca, Izquierda/Derecha, si incluye Armazón o no.
+    
+    b. Una vez que se genera el pedido queda en estado “Pendiente”.
+    
+    c. Luego el rol de Ventas puede cambiar el estado a “Pedido” o mandarlo a “Taller”
+    --------------------------------------------------------------------------------------
+    Tecnicos:  solo visualiza la lista de pedidos (con todos los detalles del producto sin
+    los precios). El Taller puede confirmar cambiando el estado del pedido a “Finalizado”.
+    --------------------------------------------------------------------------------------
+    Gerentes: puede visualizar todos los datos y necesita los siguientes reportes:
+    
+    a. Pacientes que asistieron a los turnos en la semana/mes.
+    
+    b. Pacientes que no asistieron a los turnos en la semana/mes.   
+    
+    c. Pacientes que hicieron por lo menos un Pedido en la semana/mes.
+    
+    d. Productos más vendidos en el mes.
+    
+    e. Ventas totales por mes clasificadas por Vendedores.
+
+
+-------------------------------------------------------------
+Usuarios
+
+Doc, doc = Medico -> Lista pacientes
+Sec, sec = Secretaría -> Lista turnos
+Ger, ger = Gerencia -> Lista Productos
+Ven, ven = Venta -> Lista pedidos
+Tal, tal = Taller -> Lista pedidos
