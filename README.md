@@ -50,7 +50,7 @@
 
 ## Para iniciar el sistema
 
-> Crear un entorno virtual e instalar lo que haya en requeriments/dev.txt
+> Crear un entorno virtual e instalar lo que haya en requerimientos.txt
 
 > Crear las migraciones python manage.py makemigrations
 
