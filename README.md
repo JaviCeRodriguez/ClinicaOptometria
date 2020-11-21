@@ -46,3 +46,16 @@
     3. Pacientes que hicieron por lo menos un Pedido en la semana/mes.
     4. Productos más vendidos en el mes.
     5. Ventas totales por mes clasificadas por Vendedores.
+
+
+## Para iniciar el sistema
+
+> Crear un entorno virtual e instalar lo que haya en requeriments/dev.txt
+
+> Crear las migraciones python manage.py makemigrations
+
+> Migrar a la base de datos python manage.py migrate
+
+> Ejecutar el script inicial python manage.py runscript inicial
+
+> OPCIONAL Cargar datos de prueba python manage.py loaddata datosfake.json
