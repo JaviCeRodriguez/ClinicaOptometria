@@ -3,12 +3,13 @@ from decimal import Decimal
 
 # Django
 from django.db import models
-from usuarios.models import Usuario
+from django.utils import timezone
 
 # Modelos
 from compartido.modelo_base import ModeloBase
 from pacientes.models import Paciente
 from .modelo_producto import Producto
+from usuarios.models import Usuario
 
 
 class Pedido(ModeloBase):
@@ -55,15 +56,22 @@ class Pedido(ModeloBase):
         Usuario,
         on_delete=models.SET_NULL,
         verbose_name='Vendedor responsable del pedido',
+        related_name="ventas",
         blank=True,
         null=True
     )
+    fecha_venta = models.DateField(verbose_name="Fecha", blank=True, null=True)
 
     class Meta:
         db_table = 'pedido'
         verbose_name = 'Pedido'
         verbose_name_plural = 'Pedidos'
         ordering = ['created_at']
+
+    def save(self, *args, **kwargs):
+        if self.estado == 'F':
+            self.fecha_venta = timezone.now()
+        super().save(*args, **kwargs)
 
     def verSubTotal(self):
         return f"$ {self.subtotal}"

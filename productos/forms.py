@@ -11,10 +11,6 @@ class FormularioProducto(ModelForm):
         model = Producto
         fields = '__all__'
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['descripcion'].widget.attrs['rows'] = 4
-
 
 class FormularioPedido(ModelForm):
 

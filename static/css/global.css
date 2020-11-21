@@ -23,3 +23,15 @@ body{
 #subnav:hover {
   color: gray
 }
+
+.default{
+  width: 60%;
+  height: 60%;
+  align-self:center;
+}
+.imagen {
+  transition: 0.5s;
+}
+.imagen:hover{
+  transform: scale(1.3);
+}

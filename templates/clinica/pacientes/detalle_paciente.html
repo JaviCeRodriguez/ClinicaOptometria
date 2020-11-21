@@ -10,7 +10,7 @@
           <div class="row">
             <div class="col-md-4 d-flex justify-content-center my-2">
               {% if Paciente.imagen %}
-                <img class="img-fluid rounded" src="{{Paciente.imagen.url}}" alt="Imagen del paciente" height="250" width="250">
+                <img class="img-fluid rounded imagen" src="{{Paciente.imagen.url}}" alt="Imagen del paciente" height="250" width="250">
               {% else %}
                 <img class="img-fluid" src="{% static 'img/default.svg' %}" alt="Imagen del paciente" height="250" width="250">
               {% endif %}
@@ -21,6 +21,9 @@
               </h2>
               <hr />
 
+              {% if Paciente.medico %}
+                <p class="bg-success text-center">Paciente de {{Paciente.medico}}</p>
+              {% endif %}
               {% if Paciente.email %}
                 <p>{{Paciente.email}}</p>
               {% else %}

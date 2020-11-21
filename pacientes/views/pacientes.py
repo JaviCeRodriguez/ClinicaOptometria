@@ -51,6 +51,11 @@ class Listar(LoginRequiredMixin, generic.ListView):
             for turno in turnos:
                 paciente = Paciente.objects.get(id=turno.paciente.id)
                 data.append(paciente)
+            if not data:
+                messages.error(
+                    self.request,
+                    f"Ningún paciente fue atendido el dia {b_fecha}"
+                )
             return data
         if b_query:
             return Paciente.objects.filter(

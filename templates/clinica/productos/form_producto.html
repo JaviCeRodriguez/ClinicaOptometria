@@ -21,28 +21,21 @@
 
                 <div class="row">
                     <!-- stock -->
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="my-3">
                             <label class="form-label">{{form.stock.label|upper}}</label>
                             {{form.stock|attr:"placeholder:0"|add_class:'form-control rounded-pill'}}
                         </div>
                     </div>
-                    <!--  ultimo_vencimiento -->
-                    <div class="col-md-3">
-                        <div class="my-3">
-                            <label class="form-label">{{form.ultimo_vencimiento.label|upper}}</label>
-                            {{form.ultimo_vencimiento|attr:"type:date"|add_class:'form-control rounded-pill'}}
-                        </div>
-                    </div>
                     <!-- precio -->
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="my-3">
                             <label class="form-label">{{form.precio.label|upper}}</label>
                             {{form.precio|add_class:'form-control rounded-pill'}}
                         </div>
                     </div>
                     <!-- categoria -->
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="my-3">
                             <label class="form-label">{{form.categoria.label|upper}}</label>
                             {{form.categoria|add_class:'form-control rounded-pill'}}
@@ -51,14 +44,14 @@
                 </div>
                 <div class="row">
                     <!-- Nombre -->
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="my-3">
                             <label class="form-label">{{form.nombre.label|upper}}</label>
                             {{form.nombre|attr:"autocomplete:off"|attr:"autofocus:on"|add_class:'form-control rounded-pill'}}
                         </div>
                     </div>
                     <!-- Imagen -->
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         {% if object.imagen %}
                             <div class="my-3">
                                 <label class="form-label">{{form.imagen.label|upper}}</label>
@@ -75,50 +68,41 @@
                             </div>
                         {% endif %}
                     </div>
-                    <div class="col-sm-4">
-                        <div class="row mt-5">
-                            <!-- Armazon -->
-                            <div class="col-6">
-                                <div class="my-3">
-                                    <label class="form-check-label" for="armazon">
-                                        {{form.armazon.label|upper}}
-                                    </label>
-                                    {{form.armazon|attr:"id:armazon"|add_class:'form-check-input mx-2'}}
-                                </div>
-                            </div>
-                            <!-- Lente -->
-                            <div class="col-6">
-                                <div class="my-3" id="lente">
-                                    <label class="form-label">{{form.lente.label|upper}}</label>
-                                    {{form.lente|attr:"onclick:mostrar()"|add_class:'form-check-input mx-2'}}
-                                </div>
-                            </div>
+                </div>
+
+                <div class="row d-flex justify-content-center">
+                    <div class="col-sm-3">
+                        <!-- Armazon -->
+                        <div class="my-3">
+                            <label class="form-check-label" for="armazon">
+                                {{form.armazon.label|upper}}
+                            </label>
+                            {{form.armazon|attr:"id:armazon"|add_class:'form-check-input mx-2'}}
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <!-- Lente -->
+                        <div class="my-3" id="lente">
+                            <label class="form-label">{{form.lente.label|upper}}</label>
+                            {{form.lente|attr:"onclick:mostrar()"|add_class:'form-check-input mx-2'}}
                         </div>
                     </div>
                 </div>
 
                 <div class="row" id="dependeDeLente">
                     <!-- Lado -->
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="my-3">
                             <label class="form-label">{{form.lado.label|upper}}</label>
                             {{form.lado|add_class:'form-control rounded'}}
                         </div>
                     </div>
                     <!-- Distancia -->
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="my-3">
                             <label class="form-label">{{form.distancia.label|upper}}</label>
                             {{form.distancia|add_class:'form-control rounded'}}
                         </div>
-                    </div>
-                </div>
-
-                <!-- Descripcion -->
-                <div class="row">
-                    <div class="my-3">
-                        <label class="form-label">{{form.descripcion.label|upper}}</label>
-                        {{form.descripcion|attr:"autocomplete:off"|add_class:'form-control rounded'}}
                     </div>
                 </div>
                 <div class="d-flex justify-content-center my-3">

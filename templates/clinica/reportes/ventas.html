@@ -33,38 +33,42 @@
         {% endif %}
         <div class="row">
             {% if reporte %}
-                <h3 class="text-center my-3 bg-warning">{{reporte}}</h3>
+                <h3 class="text-center my-3 bg-warning">{{titulo}}</h3>
             {% endif %}
             <table class="table table-bordered">
                 <thead class="bg-verde bg-gradient">
-                    <tr class="">
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Edad</th>
-                        <th>DNI</th>
-                        <th>Email</th>
-                        <th>Medico</th>
+                    <tr>
+                        <th>Vendedor</th>
+                        <th>Cant.Ventas</th>
+                        <th>Total mes {{mes_total}}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for paciente in pacientes %}
+                   {% for venta in ventas %}
                         <tr>
-                            <td>{{paciente.nombre}}</td>
-                            <td>{{paciente.apellido}}</td>
-                            <td>{{paciente.edad}}</td>
-                            <td>{{paciente.dni}}</td>
-                            {% if paciente.email %}
-                                <td>{{paciente.email}}</td>
+                            <td>
+                                {{venta.vendedor}}
+                            </td>
+                            {% if venta.cantidad > 0 %}
+                                <td>
+                                    {{venta.cantidad}}
+                                </td>
                             {% else %}
-                                <td>No dio email</td>
+                                <td>
+                                    Sin ventas
+                                </td>
                             {% endif %}
-                            {% if paciente.medico %}
-                                <td>{{paciente.medico}}</td>
+                            {% if venta.total.subtotal__sum %}
+                                <td>
+                                    $ {{venta.total.subtotal__sum|floatformat:"2"}}
+                                </td>
                             {% else %}
-                                <td>Sin asignar</td>
+                                <td>
+                                    Cero
+                                </td>
                             {% endif %}
                         </tr>
-                    {% endfor %}
+                   {% endfor %}
                 </tbody>
             </table>
         </div>

@@ -2,22 +2,6 @@
 {% load usuarios_tags %}
 {% load static %} 
 
-{% block css %}
-<style>
-  .default{
-    width: 60%;
-    height: 60%;
-    align-self:center;
-  }
-  .imagen {
-    transition: 0.5s;
-  }
-  .imagen:hover{
-    transform: scale(1.3);
-  }
-</style>
-{% endblock %}
-
 {% block content %}
   {% if user|sector:"Venta" or user|sector:"Gerencia" %}
     <div class="row">
@@ -71,12 +55,6 @@
           {% endif %}
       </div>
       <br>
-      <div class="row my-3">
-        {% if Producto.descripcion %}
-        {% else %}
-          <h3 class="text-center">No hay descripción...</h3>
-        {% endif %}
-      </div>
       </div>
       <div class="d-flex justify-content-center my-4">
         <div class="btn-group shadow-sm" role="group" aria-label="Basic outlined example">

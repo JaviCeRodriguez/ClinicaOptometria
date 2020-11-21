@@ -19,13 +19,6 @@ class Usuario(AbstractUser):
     dni = models.CharField(max_length=11, verbose_name="Documento")
     nombre = models.CharField(max_length=25, verbose_name="Nombre")
     apellido = models.CharField(max_length=25, verbose_name="Apellido")
-    # Campo para los vendedores---------------/
-    cant_ventas = models.PositiveIntegerField(
-        verbose_name="Cantidad ventas",
-        default=0,
-        blank=True,
-        null=True
-    )
     ultima_actividad = models.DateTimeField(verbose_name="Última actividad", blank=True, null=True)
 
     def __str__(self):
