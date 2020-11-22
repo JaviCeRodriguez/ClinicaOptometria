@@ -16,9 +16,9 @@
 
                     <!-- Pedido -->
                     <div class="row">
-
+                        {% if user|sector:"Taller" %}
                         <!-- Paciente (quien compra los productos) -->
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="my-3">
                                 <label class="form-label">
                                     {{form.paciente.label|upper}}
@@ -33,7 +33,7 @@
                         </div>
 
                         <!-- Tipo de pago (Tarjeta de credito, debito, billetera virtual, efectivo) -->
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="my-3">
                                 <label class="form-label">{{form.tipo_de_pago.label|upper}}</label>
                                 {{form.tipo_de_pago|add_class:'form-control rounded'}}
@@ -41,36 +41,68 @@
                         </div>
 
                         <!-- Estado (pendiente, taller, finalizado) -->
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="my-3">
                                 <label class="form-label">{{form.estado.label|upper}}</label>
                                 {{form.estado|add_class:'form-control rounded'}}
                             </div>
                         </div>
-
-                        <!-- Sub-total (solo lectura, se genera con los precios de los productos) -->
-                        <div class="col-md-3">
-                            <div class="my-3 text-center">
-                                <label class="form-label">Monto</label>
-                                <!-- Cantidad de productos -->
-                                {% if editar %}
-                                    <i class="fas fa-shopping-cart"></i>
-                                    {% if cantidad > 0 %}
-                                        <span class="badge bg-danger text-white rounded-pill align-text-top">
-                                            {{cantidad}}
-                                        </span>
-                                    {% endif %}
-                                {% endif %}
-                                <input type="text" name="subtotal" 
-                                {% if titulo == 'Agregar pedido' %}
-                                    value="Se actualizará"
-                                {% else%}
-                                    value="{{object.verSubTotal}}"
-                                {% endif %}
-                                readonly
-                                class="form-control bg-warning bg-gradient rounded text-center">
+                        {% else %}
+                            <!-- Paciente (quien compra los productos) -->
+                            <div class="col-md-3">
+                                <div class="my-3">
+                                    <label class="form-label">
+                                        {{form.paciente.label|upper}}
+                                        {% if user|sector:"Secretaria" or user|sector:"Gerencia" %}
+                                            <a href="{% url 'pacientes:agregar' %}?prev={{request.path}}" type="submit">
+                                                <i class="fas fa-user-plus ml-3 text-success"></i>
+                                            </a>
+                                        {% endif %}
+                                    </label>
+                                    {{form.paciente|add_class:'form-control rounded'}}
+                                </div>
                             </div>
-                        </div>
+
+                            <!-- Tipo de pago (Tarjeta de credito, debito, billetera virtual, efectivo) -->
+                            <div class="col-md-3">
+                                <div class="my-3">
+                                    <label class="form-label">{{form.tipo_de_pago.label|upper}}</label>
+                                    {{form.tipo_de_pago|add_class:'form-control rounded'}}
+                                </div>
+                            </div>
+
+                            <!-- Estado (pendiente, taller, finalizado) -->
+                            <div class="col-md-3">
+                                <div class="my-3">
+                                    <label class="form-label">{{form.estado.label|upper}}</label>
+                                    {{form.estado|add_class:'form-control rounded'}}
+                                </div>
+                            </div>
+
+                            <!-- Sub-total (solo lectura, se genera con los precios de los productos) -->
+                            <div class="col-md-3">
+                                <div class="my-3 text-center">
+                                    <label class="form-label">Monto</label>
+                                    <!-- Cantidad de productos -->
+                                    {% if editar %}
+                                        <i class="fas fa-shopping-cart"></i>
+                                        {% if cantidad > 0 %}
+                                            <span class="badge bg-danger text-white rounded-pill align-text-top">
+                                                {{cantidad}}
+                                            </span>
+                                        {% endif %}
+                                    {% endif %}
+                                    <input type="text" name="subtotal" 
+                                    {% if titulo == 'Agregar pedido' %}
+                                        value="Se actualizará"
+                                    {% else%}
+                                        value="{{object.verSubTotal}}"
+                                    {% endif %}
+                                    readonly
+                                    class="form-control bg-warning bg-gradient rounded text-center">
+                                </div>
+                            </div>
+                        {% endif %}
                     </div>
 
                     <!--Vendedor-->

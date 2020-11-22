@@ -57,8 +57,12 @@
 										<td>{{pedido.paciente}}</td>
 										<td>{{pedido.get_estado_display}}</td>
 										<td>
-											<i class="fas fa-dollar-sign text-success"></i>
-											{{pedido.subtotal}}
+											{% if user|sector:"Taller" %}
+												-
+											{% else %}
+												<i class="fas fa-dollar-sign text-success"></i>
+												{{pedido.subtotal}}
+											{% endif%}
 										</td>
 										<td>
 											<a href="{% url 'productos:editar_pedido' pedido.id %}">
