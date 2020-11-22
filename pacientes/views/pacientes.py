@@ -41,7 +41,7 @@ class Listar(LoginRequiredMixin, generic.ListView):
                     Q(nombre__in=b_query.split()) | Q(apellido__in=b_query.split()) |
                     Q(nombre__icontains=b_query.split()[0])  |
                     Q(apellido__icontains=b_query.split()[0])|
-                    Q(dni__contains=b_query) 
+                    Q(dni__contains=int(b_query))
                 ).filter(medico=self.request.user.id)
             else:
                 return Paciente.objects.filter(medico=self.request.user.id)            
@@ -51,7 +51,7 @@ class Listar(LoginRequiredMixin, generic.ListView):
             for turno in turnos:
                 paciente = Paciente.objects.get(id=turno.paciente.id)
                 data.append(paciente)
-            if not data:
+            if len(data)==0:
                 messages.error(
                     self.request,
                     f"Ningún paciente fue atendido el dia {b_fecha}"
@@ -63,7 +63,7 @@ class Listar(LoginRequiredMixin, generic.ListView):
                 Q(nombre__in=b_query.split()) | Q(apellido__in=b_query.split()) |
                 Q(nombre__icontains=b_query.split()[0])  |
                 Q(apellido__icontains=b_query.split()[0])|
-                 Q(dni__in=b_query)  
+                Q(dni__contains=int(b_query))  
             )
         else:
             return Paciente.objects.all()
